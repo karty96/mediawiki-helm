@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: mediawiki
+  name: {{ .Values.deploymentmedia.name }}
+spec:
+  replicas: {{ .Values.deploymentmedia.repicas }}
+  selector:
+    matchLabels:
+      service: mediawiki
+  template:
+    metadata:
+      labels:
+        service: mediawiki
+    spec:
+      containers:
+      - image: {{ .Values.deploymentmedia.image.app }}
+        imagePullPolicy: Always
+        name: {{ .Values.deploymentmedia.name }}
+        ports:
+        - containerPort: {{ .Values.deploymentmedia.containerPort }}

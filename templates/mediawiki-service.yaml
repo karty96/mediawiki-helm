@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: mediawiki
+  name: {{ .Values.servicemedia.name }}
+spec:
+  type: {{ .Values.servicemedia.type }}
+  ports:
+  - port: {{ .Values.servicemedia.port }}
+    targetPort: {{ .Values.servicemedia.targetPort }}
+  selector:
+    service: mediawiki

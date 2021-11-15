@@ -1,0 +1,36 @@
+deploymentmedia:
+  name: mediawiki
+  replicas: 1
+  image:
+    app: mediawiki
+    version: latest
+  containerPort: 80
+
+
+servicemedia: 
+   name: mediawiki
+   type: NodePort
+   port: 8080
+   targetPort: 80
+
+
+deploymentdb:
+   name: db
+   image:
+     app: mysql
+     version: latest
+   containerPort: 3306
+
+
+servicedb:
+   name: db
+   port: 3306
+   targetPort: 3306
+
+
+cmdb:
+    MYSQL_DATABASE: wikidatabase
+
+
+secretdb:
+   MYSQL_ROOT_PASSWORD: UGFzc3cwcmQ=
